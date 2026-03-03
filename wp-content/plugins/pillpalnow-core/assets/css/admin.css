@@ -1,0 +1,1536 @@
+/* PillPalNow Admin Styles - Professional Enterprise UI */
+
+:root {
+    --primary-color: #2563eb;
+    --primary-hover: #1d4ed8;
+    --success-color: #10b981;
+    --warning-color: #f59e0b;
+    --error-color: #ef4444;
+    --info-color: #3b82f6;
+    --text-primary: #1f2937;
+    --text-secondary: #6b7280;
+    --bg-primary: #ffffff;
+    --bg-secondary: #f8fafc;
+    --bg-tertiary: #f1f5f9;
+    --border-color: #e5e7eb;
+    --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+    --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    --border-radius: 8px;
+    --border-radius-lg: 12px;
+    --transition: all 0.2s ease-in-out;
+}
+
+.pillpalnow-admin-settings {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.pillpalnow-admin-settings .form-table th {
+    width: 220px;
+    padding: 20px 0 8px 0;
+    font-weight: 600;
+    color: var(--text-primary);
+    vertical-align: top;
+}
+
+.pillpalnow-admin-settings .description {
+    color: var(--text-secondary);
+    font-style: normal;
+    margin-top: 8px;
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+/* Enhanced Form Elements */
+.pillpalnow-admin-settings input[type="checkbox"],
+.pillpalnow-admin-settings input[type="radio"] {
+    width: 18px;
+    height: 18px;
+    margin-right: 12px;
+    accent-color: var(--primary-color);
+}
+
+.pillpalnow-admin-settings input[type="number"],
+.pillpalnow-admin-settings input[type="text"],
+.pillpalnow-admin-settings select {
+    padding: 10px 12px;
+    border: 2px solid var(--border-color);
+    border-radius: var(--border-radius);
+    font-size: 14px;
+    transition: var(--transition);
+    background: var(--bg-primary);
+    min-width: 200px;
+}
+
+.pillpalnow-admin-settings input[type="number"]:focus,
+.pillpalnow-admin-settings input[type="text"]:focus,
+.pillpalnow-admin-settings select:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+}
+
+.pillpalnow-admin-settings input[type="file"] {
+    padding: 8px;
+    border: 2px dashed var(--border-color);
+    border-radius: var(--border-radius);
+    background: var(--bg-secondary);
+    transition: var(--transition);
+    cursor: pointer;
+}
+
+.pillpalnow-admin-settings input[type="file"]:hover {
+    border-color: var(--primary-color);
+    background: rgba(37, 99, 235, 0.02);
+}
+
+/* Enhanced Buttons */
+.pillpalnow-admin-settings .button,
+.pillpalnow-admin-settings .button-primary {
+    padding: 10px 20px;
+    border-radius: var(--border-radius);
+    font-weight: 500;
+    font-size: 14px;
+    transition: var(--transition);
+    border: none;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.pillpalnow-admin-settings .button {
+    background: var(--bg-secondary);
+    color: var(--text-primary);
+    border: 1px solid var(--border-color);
+}
+
+.pillpalnow-admin-settings .button:hover {
+    background: var(--bg-tertiary);
+    border-color: var(--text-secondary);
+}
+
+.pillpalnow-admin-settings .button-primary {
+    background: var(--primary-color);
+    color: white;
+}
+
+.pillpalnow-admin-settings .button-primary:hover {
+    background: var(--primary-hover);
+    transform: translateY(-1px);
+    box-shadow: var(--shadow-md);
+}
+
+/* Loading States */
+.loading {
+    position: relative;
+    pointer-events: none;
+    opacity: 0.7;
+}
+
+.loading::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 20px;
+    height: 20px;
+    margin: -10px 0 0 -10px;
+    border: 2px solid var(--border-color);
+    border-top: 2px solid var(--primary-color);
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+/* Progress Bars */
+.progress-container {
+    margin: 15px 0;
+    display: none;
+}
+
+.progress-bar {
+    width: 100%;
+    height: 8px;
+    background: var(--bg-tertiary);
+    border-radius: 4px;
+    overflow: hidden;
+    position: relative;
+}
+
+.progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--primary-color), var(--info-color));
+    border-radius: 4px;
+    width: 0%;
+    transition: width 0.3s ease;
+    position: relative;
+}
+
+.progress-fill::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+    animation: shimmer 2s infinite;
+}
+
+@keyframes shimmer {
+    0% {
+        transform: translateX(-100%);
+    }
+
+    100% {
+        transform: translateX(100%);
+    }
+}
+
+.progress-text {
+    font-size: 12px;
+    color: var(--text-secondary);
+    margin-top: 5px;
+    text-align: center;
+}
+
+/* Notification Messages */
+.admin-notice {
+    border-radius: var(--border-radius);
+    padding: 16px 20px;
+    margin: 15px 0;
+    border-left: 4px solid;
+    position: relative;
+    overflow: hidden;
+    animation: slideIn 0.3s ease-out;
+}
+
+.admin-notice.success {
+    background: rgba(16, 185, 129, 0.1);
+    border-left-color: var(--success-color);
+    color: #065f46;
+}
+
+.admin-notice.error {
+    background: rgba(239, 68, 68, 0.1);
+    border-left-color: var(--error-color);
+    color: #991b1b;
+}
+
+.admin-notice.warning {
+    background: rgba(245, 158, 11, 0.1);
+    border-left-color: var(--warning-color);
+    color: #92400e;
+}
+
+.admin-notice.info {
+    background: rgba(59, 130, 246, 0.1);
+    border-left-color: var(--info-color);
+    color: #1e40af;
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.admin-notice::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+    animation: noticeGlow 3s ease-in-out infinite;
+    pointer-events: none;
+}
+
+@keyframes noticeGlow {
+
+    0%,
+    100% {
+        opacity: 0;
+    }
+
+    50% {
+        opacity: 1;
+    }
+}
+
+/* Enhanced Card Styles */
+.pillpalnow-stat-card {
+    background: var(--bg-primary);
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius-lg);
+    padding: 24px;
+    text-align: center;
+    box-shadow: var(--shadow-sm);
+    transition: var(--transition);
+    position: relative;
+    overflow: hidden;
+}
+
+.pillpalnow-stat-card:hover {
+    box-shadow: var(--shadow-md);
+    transform: translateY(-2px);
+}
+
+.pillpalnow-stat-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, var(--primary-color), var(--info-color));
+}
+
+.pillpalnow-stat-card h3 {
+    margin: 0 0 12px 0;
+    color: var(--text-primary);
+    font-size: 14px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.stat-number {
+    font-size: 32px;
+    font-weight: 700;
+    color: var(--text-primary);
+    line-height: 1;
+}
+
+.stat-number.sent {
+    color: var(--success-color);
+}
+
+.stat-number.failed {
+    color: var(--error-color);
+}
+
+.pillpalnow-logs-table {
+    margin-top: 20px;
+}
+
+.pillpalnow-logs-table .column-date {
+    width: 15%;
+}
+
+.pillpalnow-logs-table .column-user {
+    width: 20%;
+}
+
+.pillpalnow-logs-table .column-type {
+    width: 15%;
+}
+
+.pillpalnow-logs-table .column-provider {
+    width: 15%;
+}
+
+.pillpalnow-logs-table .column-status {
+    width: 10%;
+}
+
+.pillpalnow-logs-table .column-message {
+    width: 25%;
+}
+
+.status-sent {
+    color: #46b450;
+    font-weight: bold;
+}
+
+.status-failed {
+    color: #dc3232;
+    font-weight: bold;
+}
+
+.status-skipped {
+    color: #ffb900;
+    font-weight: bold;
+}
+
+/* Notification Dashboard Styles */
+.pillpalnow-stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+    margin: 20px 0;
+}
+
+.pillpalnow-stat-card {
+    background: #fff;
+    border: 1px solid #ccd0d4;
+    border-radius: 4px;
+    padding: 20px;
+    text-align: center;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.pillpalnow-stat-card h3 {
+    margin: 0 0 10px 0;
+    color: #23282d;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.stat-number {
+    font-size: 28px;
+    font-weight: bold;
+    color: #23282d;
+}
+
+.stat-number.sent {
+    color: #46b450;
+}
+
+.stat-number.failed {
+    color: #dc3232;
+}
+
+.pillpalnow-filters {
+    background: var(--bg-primary);
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius-lg);
+    padding: 24px;
+    margin: 24px 0;
+    box-shadow: var(--shadow-sm);
+}
+
+.filter-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    align-items: end;
+}
+
+.filter-group {
+    display: flex;
+    flex-direction: column;
+    min-width: 160px;
+    flex: 1;
+}
+
+.filter-group label {
+    font-weight: 600;
+    margin-bottom: 8px;
+    color: var(--text-primary);
+    font-size: 14px;
+}
+
+.filter-group input,
+.filter-group select {
+    padding: 10px 12px;
+    border: 2px solid var(--border-color);
+    border-radius: var(--border-radius);
+    font-size: 14px;
+    transition: var(--transition);
+    background: var(--bg-primary);
+}
+
+.filter-group input:focus,
+.filter-group select:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+}
+
+.filter-actions {
+    display: flex;
+    gap: 12px;
+    align-items: end;
+}
+
+.filter-actions .button {
+    padding: 10px 16px;
+    font-weight: 500;
+}
+
+.pillpalnow-bulk-actions {
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius-lg);
+    padding: 20px;
+    margin: 24px 0;
+    box-shadow: var(--shadow-sm);
+}
+
+.pillpalnow-bulk-actions form {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.pillpalnow-bulk-actions select {
+    padding: 10px 12px;
+    border: 2px solid var(--border-color);
+    border-radius: var(--border-radius);
+    font-size: 14px;
+    min-width: 200px;
+    background: var(--bg-primary);
+    transition: var(--transition);
+}
+
+.pillpalnow-bulk-actions select:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+}
+
+.pillpalnow-test-send {
+    background: var(--bg-primary);
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius-lg);
+    padding: 24px;
+    margin: 24px 0;
+    box-shadow: var(--shadow-sm);
+}
+
+.pillpalnow-test-send h3 {
+    margin: 0 0 16px 0;
+    color: var(--text-primary);
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.test-send-row {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.test-send-row select,
+.test-send-row input {
+    padding: 10px 12px;
+    border: 2px solid var(--border-color);
+    border-radius: var(--border-radius);
+    font-size: 14px;
+    transition: var(--transition);
+    background: var(--bg-primary);
+    min-width: 160px;
+}
+
+.test-send-row input:focus,
+.test-send-row select:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+}
+
+.test-send-row input[type="email"] {
+    flex: 1;
+    min-width: 250px;
+}
+
+.pillpalnow-user-groups {
+    margin-top: 24px;
+}
+
+.pillpalnow-user-group {
+    background: var(--bg-primary);
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius-lg);
+    margin-bottom: 24px;
+    overflow: hidden;
+    box-shadow: var(--shadow-sm);
+    transition: var(--transition);
+}
+
+.pillpalnow-user-group:hover {
+    box-shadow: var(--shadow-md);
+}
+
+.user-group-header {
+    background: var(--bg-secondary);
+    padding: 20px 24px;
+    border-bottom: 1px solid var(--border-color);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: var(--transition);
+}
+
+.user-group-header:hover {
+    background: var(--bg-tertiary);
+}
+
+.user-info strong {
+    font-size: 18px;
+    color: var(--text-primary);
+    font-weight: 600;
+}
+
+.user-stats {
+    color: var(--text-secondary);
+    margin-left: 20px;
+    font-size: 14px;
+}
+
+.user-stats .sent {
+    color: var(--success-color);
+    font-weight: 600;
+}
+
+.user-stats .failed {
+    color: var(--error-color);
+    font-weight: 600;
+}
+
+.user-actions .button {
+    padding: 8px 16px;
+    font-size: 13px;
+    font-weight: 500;
+    transition: var(--transition);
+}
+
+.user-actions .button:hover {
+    transform: translateY(-1px);
+    box-shadow: var(--shadow-sm);
+}
+
+.user-group-details {
+    padding: 0;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease-in-out;
+}
+
+.user-group-details.show {
+    max-height: 1000px;
+}
+
+.user-group-details table {
+    margin: 0;
+    border: none;
+    width: 100%;
+}
+
+.user-group-details thead th {
+    background: var(--bg-secondary);
+    border-bottom: 2px solid var(--border-color);
+    padding: 16px 12px;
+    font-weight: 600;
+    color: var(--text-primary);
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.user-group-details tbody td {
+    padding: 16px 12px;
+    border-bottom: 1px solid var(--border-color);
+    vertical-align: middle;
+}
+
+.log-row {
+    transition: var(--transition);
+}
+
+.log-row:hover {
+    background: var(--bg-secondary);
+}
+
+.log-row.sent {
+    background-color: rgba(16, 185, 129, 0.05);
+}
+
+.log-row.failed {
+    background-color: rgba(239, 68, 68, 0.05);
+}
+
+.log-row.skipped {
+    background-color: rgba(245, 158, 11, 0.05);
+}
+
+.status-badge {
+    display: inline-flex;
+    align-items: center;
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    transition: var(--transition);
+}
+
+.status-badge.status-sent {
+    background: rgba(16, 185, 129, 0.1);
+    color: var(--success-color);
+    border: 1px solid rgba(16, 185, 129, 0.2);
+}
+
+.status-badge.status-failed {
+    background: rgba(239, 68, 68, 0.1);
+    color: var(--error-color);
+    border: 1px solid rgba(239, 68, 68, 0.2);
+}
+
+.status-badge.status-skipped {
+    background: rgba(245, 158, 11, 0.1);
+    color: var(--warning-color);
+    border: 1px solid rgba(245, 158, 11, 0.2);
+}
+
+.status-badge.status-resent {
+    background: rgba(59, 130, 246, 0.1);
+    color: var(--info-color);
+    border: 1px solid rgba(59, 130, 246, 0.2);
+}
+
+/* Enhanced Table Actions */
+.log-row .button {
+    padding: 6px 12px;
+    font-size: 12px;
+    font-weight: 500;
+    transition: var(--transition);
+}
+
+.log-row .button:hover {
+    transform: translateY(-1px);
+    box-shadow: var(--shadow-sm);
+}
+
+/* Enhanced Responsive Design */
+@media (max-width: 1024px) {
+    .pillpalnow-stats-grid {
+        grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+        gap: 16px;
+    }
+
+    .filter-row {
+        gap: 16px;
+    }
+
+    .filter-group {
+        min-width: 140px;
+    }
+}
+
+@media (max-width: 768px) {
+    .pillpalnow-admin-settings {
+        margin: 0 10px;
+    }
+
+    .pillpalnow-stats-grid {
+        grid-template-columns: 1fr;
+        gap: 12px;
+    }
+
+    .filter-row {
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    .filter-group {
+        width: 100%;
+        min-width: auto;
+    }
+
+    .filter-actions {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .filter-actions .button {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .user-group-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
+        padding: 16px 20px;
+    }
+
+    .user-info {
+        width: 100%;
+    }
+
+    .user-stats {
+        margin-left: 0;
+        margin-top: 8px;
+    }
+
+    .user-actions {
+        width: 100%;
+    }
+
+    .user-actions .button {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .test-send-row {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 12px;
+    }
+
+    .test-send-row input[type="email"] {
+        min-width: auto;
+    }
+
+    .pillpalnow-bulk-actions form {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 12px;
+    }
+
+    .pillpalnow-bulk-actions select {
+        min-width: auto;
+    }
+
+    .user-group-details thead th,
+    .user-group-details tbody td {
+        padding: 12px 8px;
+        font-size: 13px;
+    }
+
+    .user-group-details thead th {
+        font-size: 12px;
+    }
+}
+
+@media (max-width: 480px) {
+    .pillpalnow-admin-settings .form-table th {
+        width: 100%;
+        display: block;
+        padding-bottom: 4px;
+    }
+
+    .pillpalnow-admin-settings .form-table td {
+        display: block;
+        padding-top: 0;
+    }
+
+    .stat-number {
+        font-size: 28px;
+    }
+
+    .pillpalnow-stat-card {
+        padding: 20px;
+    }
+}
+
+/* Accessibility Enhancements */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+    :root {
+        --border-color: #000;
+        --bg-secondary: #fff;
+        --text-secondary: #000;
+    }
+
+    .pillpalnow-stat-card {
+        border: 2px solid #000;
+    }
+
+    .status-badge {
+        border: 2px solid currentColor;
+    }
+}
+
+/* Focus visible for keyboard navigation */
+.button:focus-visible,
+input:focus-visible,
+select:focus-visible {
+    outline: 2px solid var(--primary-color);
+    outline-offset: 2px;
+}
+
+/* ============================
+   ENHANCED FEATURES STYLES
+   ============================ */
+
+/* Tabbed Interface */
+.pillpalnow-tab-wrapper {
+    margin: 20px 0;
+    border-bottom: 2px solid var(--border-color);
+}
+
+.pillpalnow-tab-wrapper .nav-tab {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 20px;
+    margin: 0 4px -2px 0;
+    border: none;
+    border-bottom: 3px solid transparent;
+    background: transparent;
+    color: var(--text-secondary);
+    font-weight: 500;
+    transition: var(--transition);
+    text-decoration: none;
+}
+
+.pillpalnow-tab-wrapper .nav-tab:hover {
+    color: var(--primary-color);
+    background: var(--bg-secondary);
+}
+
+.pillpalnow-tab-wrapper .nav-tab.nav-tab-active {
+    color: var(--primary-color);
+    border-bottom-color: var(--primary-color);
+    background: transparent;
+}
+
+.pillpalnow-tab-wrapper .nav-tab .dashicons {
+    font-size: 18px;
+    width: 18px;
+    height: 18px;
+}
+
+.pillpalnow-tab-content {
+    padding: 30px 0;
+    animation: fadeIn 0.3s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* System Status Widget */
+.pillpalnow-system-status-widget {
+    background: linear-gradient(135deg, #f8fafc 0%, #ffffff 100%);
+    border: 2px solid var(--border-color);
+    border-radius: var(--border-radius-lg);
+    padding: 24px;
+    margin: 20px 0;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    transition: var(--transition);
+}
+
+.pillpalnow-system-status-widget:hover {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+}
+
+.pillpalnow-system-status-widget .status-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 16px;
+    padding-bottom: 12px;
+    border-bottom: 2px solid var(--border-color);
+}
+
+.pillpalnow-system-status-widget .status-header h3 {
+    margin: 0;
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--text-primary);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.pillpalnow-system-status-widget .status-header h3::before {
+    content: "\f227";
+    /* dashicons-info */
+    font-family: dashicons;
+    font-size: 20px;
+    color: var(--primary-color);
+}
+
+.pillpalnow-system-status-widget .button-small {
+    padding: 8px 14px;
+    font-size: 13px;
+    font-weight: 600;
+    transition: var(--transition);
+}
+
+.pillpalnow-system-status-widget .button-small:hover {
+    transform: translateY(-1px);
+    box-shadow: var(--shadow-sm);
+}
+
+.pillpalnow-system-status-widget .status-indicator {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 14px 16px;
+    border-radius: var(--border-radius);
+    background: var(--bg-primary);
+    border: 1px solid transparent;
+    transition: var(--transition);
+}
+
+.pillpalnow-system-status-widget .status-indicator.status-good {
+    background: rgba(16, 185, 129, 0.05);
+    border-color: rgba(16, 185, 129, 0.2);
+}
+
+.pillpalnow-system-status-widget .status-indicator.status-warning {
+    background: rgba(245, 158, 11, 0.05);
+    border-color: rgba(245, 158, 11, 0.2);
+}
+
+.pillpalnow-system-status-widget .status-indicator.status-error {
+    background: rgba(239, 68, 68, 0.05);
+    border-color: rgba(239, 68, 68, 0.2);
+}
+
+.pillpalnow-system-status-widget .status-dot {
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    flex-shrink: 0;
+    animation: pulse 2s infinite;
+    box-shadow: 0 0 8px currentColor;
+}
+
+.status-indicator.status-good .status-dot {
+    background: var(--success-color);
+    color: var(--success-color);
+}
+
+.status-indicator.status-warning .status-dot {
+    background: var(--warning-color);
+    color: var(--warning-color);
+}
+
+.status-indicator.status-error .status-dot {
+    background: var(--error-color);
+    color: var(--error-color);
+}
+
+@keyframes pulse {
+
+    0%,
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+
+    50% {
+        opacity: 0.7;
+        transform: scale(1.1);
+    }
+}
+
+.pillpalnow-system-status-widget .status-text {
+    font-weight: 600;
+    font-size: 15px;
+    color: var(--text-primary);
+}
+
+.pillpalnow-system-status-widget .status-details {
+    margin-top: 16px;
+    padding-top: 16px;
+    border-top: 1px solid var(--border-color);
+}
+
+.pillpalnow-system-status-widget .status-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    padding: 10px 12px;
+    margin-bottom: 8px;
+    border-radius: var(--border-radius);
+    font-size: 14px;
+    border-left: 3px solid;
+    transition: var(--transition);
+}
+
+.pillpalnow-system-status-widget .status-item:hover {
+    transform: translateX(2px);
+}
+
+.pillpalnow-system-status-widget .status-item.status-error {
+    background: rgba(239, 68, 68, 0.08);
+    color: #991b1b;
+    border-left-color: var(--error-color);
+}
+
+.pillpalnow-system-status-widget .status-item.status-warning {
+    background: rgba(245, 158, 11, 0.08);
+    color: #92400e;
+    border-left-color: var(--warning-color);
+}
+
+.pillpalnow-system-status-widget .status-item .dashicons {
+    flex-shrink: 0;
+    margin-top: 2px;
+    font-size: 18px;
+}
+
+/* Toast Notifications */
+#pillpalnow-toast-container {
+    position: fixed;
+    top: 32px;
+    /* Below WP admin bar */
+    right: 20px;
+    z-index: 999999;
+    max-width: 400px;
+}
+
+.pillpalnow-toast {
+    background: var(--bg-primary);
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow-lg);
+    margin-bottom: 12px;
+    padding: 16px;
+    border-left: 4px solid var(--primary-color);
+    position: relative;
+    transform: translateX(400px);
+    opacity: 0;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    overflow: hidden;
+}
+
+.pillpalnow-toast.show {
+    transform: translateX(0);
+    opacity: 1;
+}
+
+.pillpalnow-toast.toast-success {
+    border-left-color: var(--success-color);
+}
+
+.pillpalnow-toast.toast-error {
+    border-left-color: var(--error-color);
+}
+
+.pillpalnow-toast.toast-warning {
+    border-left-color: var(--warning-color);
+}
+
+.pillpalnow-toast.toast-info {
+    border-left-color: var(--info-color);
+}
+
+.pillpalnow-toast .toast-content {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    padding-right: 30px;
+}
+
+.pillpalnow-toast .toast-icon::before {
+    font-family: dashicons;
+    font-size: 20px;
+    width: 20px;
+    height: 20px;
+    display: block;
+}
+
+.toast-success .toast-icon::before {
+    content: "\f147";
+    /* checkmark */
+    color: var(--success-color);
+}
+
+.toast-error .toast-icon::before {
+    content: "\f153";
+    /* warning */
+    color: var(--error-color);
+}
+
+.toast-warning .toast-icon::before {
+    content: "\f227";
+    /* info */
+    color: var(--warning-color);
+}
+
+.toast-info .toast-icon::before {
+    content: "\f348";
+    /* lightbulb */
+    color: var(--info-color);
+}
+
+.pillpalnow-toast .toast-message {
+    flex: 1;
+    color: var(--text-primary);
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+.pillpalnow-toast .toast-close {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    background: none;
+    border: none;
+    font-size: 20px;
+    line-height: 1;
+    color: var(--text-secondary);
+    cursor: pointer;
+    padding: 0;
+    width: 20px;
+    height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: var(--transition);
+}
+
+.pillpalnow-toast .toast-close:hover {
+    color: var(--text-primary);
+}
+
+.pillpalnow-toast .toast-progress {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 3px;
+    background: currentColor;
+    opacity: 0.3;
+}
+
+@keyframes toast-progress {
+    from {
+        width: 100%;
+    }
+
+    to {
+        width: 0%;
+    }
+}
+
+/* Spin animation for loading icons */
+.dashicons.spin {
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* Debug Console */
+.pillpalnow-debug-actions {
+    margin-bottom: 20px;
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.button-destructive {
+    background: var(--error-color) !important;
+    color: white !important;
+    border-color: var(--error-color) !important;
+}
+
+.button-destructive:hover {
+    background: #dc2626 !important;
+}
+
+.debug-info-container,
+.recent-logs-container {
+    background: var(--bg-secondary);
+    border: 2px solid var(--border-color);
+    border-radius: var(--border-radius);
+    padding: 20px;
+    margin-top: 20px;
+    max-height: 500px;
+    overflow-y: auto;
+}
+
+.debug-info-sections {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.debug-section {
+    background: var(--bg-primary);
+    border-radius: var(--border-radius);
+    padding: 15px;
+    border: 1px solid var(--border-color);
+}
+
+.debug-section h4 {
+    margin: 0 0 12px 0;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--text-primary);
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 8px;
+}
+
+.debug-section pre {
+    background: #1e293b;
+    color: #e2e8f0;
+    padding: 15px;
+    border-radius: var(--border-radius);
+    overflow-x: auto;
+    font-size: 12px;
+    line-height: 1.6;
+    margin: 0;
+    font-family: 'Monaco', 'Menlo', 'Consolas', monospace;
+}
+
+/* Logs List */
+.logs-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.log-entry {
+    background: var(--bg-primary);
+    border: 1px solid var(--border-color);
+    border-left: 4px solid var(--info-color);
+    border-radius: var(--border-radius);
+    padding: 12px;
+    transition: var(--transition);
+}
+
+.log-entry:hover {
+    box-shadow: var(--shadow-sm);
+}
+
+.log-entry.log-success {
+    border-left-color: var(--success-color);
+}
+
+.log-entry.log-failed,
+.log-entry.log-error {
+    border-left-color: var(--error-color);
+}
+
+.log-entry.log-pending {
+    border-left-color: var(--warning-color);
+}
+
+.log-entry .log-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 8px;
+    font-size: 12px;
+}
+
+.log-entry .log-date {
+    color: var(--text-secondary);
+}
+
+.log-entry .log-status {
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-weight: 500;
+    font-size: 11px;
+}
+
+.log-entry .log-status.badge-success {
+    background: rgba(16, 185, 129, 0.1);
+    color: #065f46;
+}
+
+.log-entry .log-status.badge-failed,
+.log-entry .log-status.badge-error {
+    background: rgba(239, 68, 68, 0.1);
+    color: #991b1b;
+}
+
+.log-entry .log-status.badge-pending {
+    background: rgba(245, 158, 11, 0.1);
+    color: #92400e;
+}
+
+.log-entry .log-details {
+    font-size: 13px;
+    color: var(--text-primary);
+    line-height: 1.5;
+}
+
+.log-entry .log-details strong {
+    font-weight: 600;
+}
+
+.log-entry .log-details em {
+    color: var(--text-secondary);
+    font-style: normal;
+}
+
+/* Test Notification Panel */
+.pillpalnow-test-notification-panel {
+    background: var(--bg-secondary);
+    border-radius: var(--border-radius-lg);
+    padding: 20px;
+    margin-top: 20px;
+}
+
+/* Responsive Design */
+@media screen and (max-width: 782px) {
+    .pillpalnow-tab-wrapper {
+        overflow-x: auto;
+        white-space: nowrap;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    .pillpalnow-tab-wrapper .nav-tab {
+        font-size: 13px;
+        padding: 10px 15px;
+    }
+
+    .pillpalnow-system-status-widget {
+        padding: 15px;
+    }
+
+    #pillpalnow-toast-container {
+        right: 10px;
+        left: 10px;
+        max-width: none;
+    }
+
+    .pillpalnow-toast {
+        transform: translateY(-100px);
+    }
+
+    .pillpalnow-toast.show {
+        transform: translateY(0);
+    }
+
+    .pillpalnow-debug-actions {
+        flex-direction: column;
+    }
+
+    .pillpalnow-debug-actions .button {
+        width: 100%;
+        justify-content: center;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .pillpalnow-admin-settings {
+        margin: 0 -10px;
+    }
+
+    .pillpalnow-system-status-widget .status-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
+
+    .log-entry .log-meta {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 5px;
+    }
+}
+
+/* Loading States */
+.button.loading {
+    position: relative;
+    color: transparent !important;
+}
+
+.button.loading::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 16px;
+    height: 16px;
+    border: 2px solid currentColor;
+    border-top-color: transparent;
+    border-radius: 50%;
+    animation: spin 0.6s linear infinite;
+}
+
+/* Smooth Animations */
+* {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* Utility Classes */
+.text-success {
+    color: var(--success-color);
+}
+
+.text-error {
+    color: var(--error-color);
+}
+
+.text-warning {
+    color: var(--warning-color);
+}
+
+.text-info {
+    color: var(--info-color);
+}
+
+/* ============================
+   HIDE PROMOTIONAL BANNERS
+   ============================ */
+
+/* Hide third-party plugin promotional notices on PillPalNow settings pages */
+.toplevel_page_pillpalnow-settings #wpuf-review-notice,
+.toplevel_page_pillpalnow-settings .wpuf-promote-banner,
+.toplevel_page_pillpalnow-settings .wpuf-review-notice,
+.toplevel_page_pillpalnow-settings .notice.wpuf-notice,
+.toplevel_page_pillpalnow-settings div[class*="promote"],
+.toplevel_page_pillpalnow-settings div[class*="review-notice"],
+.pillpalnow_page_pillpalnow-notification-logs #wpuf-review-notice,
+.pillpalnow_page_pillpalnow-notification-logs .wpuf-promote-banner,
+.pillpalnow_page_pillpalnow-notification-logs .wpuf-review-notice,
+.pillpalnow_page_pillpalnow-notification-logs .notice.wpuf-notice,
+.pillpalnow_page_pillpalnow-notification-logs div[class*="promote"],
+.pillpalnow_page_pillpalnow-notification-logs div[class*="review-notice"] {
+    display: none !important;
+}
+
+/* Target the specific banner by ID */
+#wpuf-review-notice {
+    display: none !important;
+}
+
+/* Also hide other common promotional notices */
+.toplevel_page_pillpalnow-settings .notice.is-dismissible:not(.pillpalnow-notice),
+.pillpalnow_page_pillpalnow-notification-logs .notice.is-dismissible:not(.pillpalnow-notice) {
+    display: none !important;
+}
+
+/* Ensure PillPalNow's own notices are still visible */
+.pillpalnow-notice {
+    display: block !important;
+}

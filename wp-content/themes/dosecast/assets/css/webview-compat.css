@@ -1,0 +1,600 @@
+/**
+ * WebView Compatibility Styles
+ * Applied when body has .webview-mode class
+ * 
+ * @package PillPalNow
+ */
+
+/* ===== WEBVIEW MODE OVERRIDES ===== */
+body.webview-mode {
+    /* ALLOW Scroll */
+    overflow-y: auto !important;
+    overflow-x: hidden;
+    height: 100vh;
+    width: 100%;
+    /* position: relative; */
+    /* Removed fixed positioning */
+
+    /* Theme Background for seamless experience */
+    background-color: #0B101E;
+
+    /* Prevent text resize issues */
+    -webkit-text-size-adjust: 100%;
+
+    /* Remove tap highlight */
+    -webkit-tap-highlight-color: transparent;
+
+    /* UI Tweaks */
+    user-select: none;
+    -webkit-user-select: none;
+}
+
+/* Allow text selection on specific elements if needed */
+body.webview-mode input,
+body.webview-mode textarea,
+body.webview-mode p,
+body.webview-mode h1,
+body.webview-mode h2,
+body.webview-mode h3,
+body.webview-mode h4,
+body.webview-mode span {
+    -webkit-user-select: text;
+    user-select: text;
+}
+
+/* Universal hide for internal elements (Firefox/IE) */
+body.webview-mode * {
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+body.webview-mode::-webkit-scrollbar,
+body.webview-mode *::-webkit-scrollbar {
+    display: none;
+}
+
+/* Ensure html doesn't block scroll either */
+html:has(body.webview-mode) {
+    overflow-y: auto !important;
+    height: 100vh;
+    width: 100%;
+}
+
+html:has(body.webview-mode)::-webkit-scrollbar {
+    display: none;
+}
+
+/* Disable heavy animations in WebView for performance */
+body.webview-mode *,
+body.webview-mode *::before,
+body.webview-mode *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+}
+
+/* Allow essential transitions */
+body.webview-mode .inline-panel,
+body.webview-mode .notification-dropdown,
+body.webview-mode .profile-dropdown-menu,
+body.webview-mode .toast,
+body.webview-mode .switch-toggle {
+    transition-duration: 150ms !important;
+}
+
+/* ===== TOUCH-FRIENDLY TAP TARGETS ===== */
+body.webview-mode .btn,
+body.webview-mode .nav-item,
+body.webview-mode .action-btn,
+body.webview-mode button,
+body.webview-mode a[role="button"] {
+    min-height: 44px;
+    min-width: 44px;
+}
+
+body.webview-mode .nav-item {
+    padding: 0.75rem 1rem;
+}
+
+/* ===== HIDE DESKTOP-ONLY ELEMENTS ===== */
+body.webview-mode .desktop-only,
+body.webview-mode .hide-in-webview {
+    display: none !important;
+}
+
+/* ===== SAFE AREA INSETS & SCROLL CONTAINER ===== */
+body.webview-mode .app-container {
+    /* CRITICAL: Allow document to scroll naturally */
+    height: auto !important;
+    min-height: 100vh;
+    width: 100%;
+    overflow: visible !important;
+    /* Let the body handle the scroll */
+
+    /* Ensure content formatting */
+    display: flex;
+    flex-direction: column;
+
+    /* Safe area padding */
+    padding-top: env(safe-area-inset-top, 0);
+    padding-bottom: env(safe-area-inset-bottom, 0);
+    padding-left: env(safe-area-inset-left, 0);
+    padding-right: env(safe-area-inset-right, 0);
+
+    /* Move padding bottom to a spacer or last child to avoid cut-off */
+    box-sizing: border-box;
+}
+
+/* Ensure children don't overflow horizontally */
+body.webview-mode .container {
+    overflow-x: hidden;
+}
+
+body.webview-mode .top-nav {
+    /* If nav is sticky/fixed inside container, we need to adjust */
+    position: sticky;
+    top: 0;
+    padding-top: calc(0.75rem + env(safe-area-inset-top, 0));
+}
+
+/* ===== PREVENT FIXED POSITION ISSUES ===== */
+body.webview-mode .fab {
+    position: absolute;
+    /* Revert to absolute relative to container if needed, or keep fixed */
+    bottom: calc(2rem + env(safe-area-inset-bottom, 0));
+}
+
+body.webview-mode .toast-container {
+    bottom: calc(2rem + env(safe-area-inset-bottom, 0));
+}
+
+/* ===== FORM ELEMENT FIXES ===== */
+body.webview-mode input,
+body.webview-mode select,
+body.webview-mode textarea {
+    font-size: 16px;
+    /* Prevents iOS zoom on focus */
+    -webkit-appearance: none;
+    appearance: none;
+}
+
+body.webview-mode select {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23fff' d='M6 8L1 3h10z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 1rem center;
+    padding-right: 2.5rem;
+}
+
+/* ===== LOADING STATES ===== */
+body.webview-mode .loading-skeleton {
+    background: linear-gradient(90deg, var(--card-color) 25%, var(--card-hover) 50%, var(--card-color) 75%);
+    background-size: 200% 100%;
+    animation: skeleton-loading 1.5s infinite !important;
+}
+
+@keyframes skeleton-loading {
+    0% {
+        background-position: 200% 0;
+    }
+
+    100% {
+        background-position: -200% 0;
+    }
+}
+
+/* ===== OFFLINE INDICATOR ===== */
+body.webview-mode.offline::before {
+    content: "You're offline";
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background: var(--warning-color);
+    color: #000;
+    text-align: center;
+    padding: 0.5rem;
+    font-size: 0.875rem;
+    font-weight: 600;
+    z-index: 10000;
+}
+
+body.webview-mode.offline .app-container {
+    padding-top: calc(2rem + env(safe-area-inset-top, 0));
+}
+
+/* ===== RESPONSIVE NAVIGATION FOR WEBVIEW ===== */
+@media (max-width: 768px) {
+    body.webview-mode .nav-links {
+        gap: 0.25rem;
+    }
+
+    /* Hide nav text labels on small screens */
+    body.webview-mode .nav-item {
+        padding: 0.5rem;
+    }
+
+    body.webview-mode .nav-item svg {
+        width: 1.5rem;
+        height: 1.5rem;
+    }
+}
+
+/* ===== COMPACT HEADER FOR WEBVIEW ===== */
+body.webview-mode .app-header {
+    padding: 1rem 0;
+}
+
+/* ===== IMPROVED SCROLLING ===== */
+body.webview-mode .scrollable-content,
+body.webview-mode .container,
+body.webview-mode main {
+    /* Let parent app-container handle scroll generally, unless specific inner scroll needed */
+    overflow: visible;
+}
+
+/* Full page scroll wrapper - use on main content areas */
+body.webview-mode .scroll-wrapper {
+    overflow: visible;
+    height: auto;
+}
+
+/* ===== CARD OPTIMIZATIONS ===== */
+body.webview-mode .card,
+body.webview-mode .dashboard-card {
+    /* Modern App Card Style */
+    background: linear-gradient(180deg, var(--card-color) 0%, rgba(17, 24, 39, 0.95) 100%);
+    box-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.2);
+    /* Softer, deeper shadow */
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    /* Subtle border */
+    border-radius: 16px;
+    /* Larger radius for modern feel */
+    transition: transform 0.1s ease, box-shadow 0.1s ease;
+}
+
+/* Touch Feedback for Cards */
+body.webview-mode .card:active,
+body.webview-mode .dashboard-card:active {
+    transform: scale(0.98);
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+}
+
+/* ===== LOADING SPINNER ===== */
+body.webview-mode .loading-spinner {
+    display: inline-block;
+    width: 24px;
+    height: 24px;
+    border: 3px solid rgba(255, 255, 255, 0.1);
+    border-top-color: var(--primary-color);
+    border-radius: 50%;
+    animation: spin 0.8s cubic-bezier(0.4, 0.0, 0.2, 1) infinite !important;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* ===== PREVENT TEXT SELECTION ON BUTTONS ===== */
+body.webview-mode button,
+body.webview-mode .btn,
+body.webview-mode .nav-item {
+    -webkit-user-select: none;
+    user-select: none;
+    /* transition: transform 0.1s ease; */
+    /* Optional: if generic transition desired */
+}
+
+/* Button Active State (Touch Feedback) */
+body.webview-mode button:active,
+body.webview-mode .btn:active,
+body.webview-mode .nav-item:active {
+    transform: scale(0.96);
+    opacity: 0.9;
+}
+
+/* ===== BETTER FOCUS STATES FOR TOUCH ===== */
+body.webview-mode *:focus {
+    outline: none;
+}
+
+body.webview-mode input:focus,
+body.webview-mode select:focus,
+body.webview-mode textarea:focus {
+    border-color: var(--primary-color);
+    background-color: #1e293b;
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.25);
+    /* Softer ring */
+}
+
+/* ===== VIEWPORT HEIGHT FIX ===== */
+body.webview-mode .min-h-screen {
+    min-height: 100%;
+    /* Changed from 100vh to avoid scroll issues */
+}
+
+/* ===== LOADING OVERLAY ===== */
+.loading-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(11, 16, 30, 0.8);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10;
+    border-radius: inherit;
+}
+
+.is-loading {
+    pointer-events: none;
+    opacity: 0.7;
+}
+
+/* Global loading spinner (not webview-specific) */
+.loading-spinner {
+    display: inline-block;
+    width: 24px;
+    height: 24px;
+    border: 3px solid var(--border-color);
+    border-top-color: var(--primary-color);
+    border-radius: 50%;
+    animation: spin 0.8s linear infinite;
+}
+
+/* ===== ERROR STATES ===== */
+.has-error {
+    border-color: var(--danger-color) !important;
+}
+
+.api-error-message {
+    background: rgba(239, 68, 68, 0.1);
+    border: 1px solid var(--danger-color);
+    border-radius: var(--radius-md);
+    padding: 1rem;
+    margin-top: 0.5rem;
+    color: var(--danger-color);
+    font-size: 0.875rem;
+    text-align: center;
+}
+
+.api-error-message .error-icon {
+    margin-right: 0.5rem;
+}
+
+/* ===== BUTTON SIZES ===== */
+.btn-sm {
+    padding: 0.5rem 1rem;
+    font-size: 0.875rem;
+    min-height: 36px;
+}
+
+/* ===== RETRY BUTTON ===== */
+.retry-btn {
+    margin-top: 0.75rem;
+    display: inline-block;
+}
+
+/* =========================================
+   MOBILE RESPONSIVE FIXES FOR WEBVIEW
+   ========================================= */
+
+/* Mobile-first container adjustments */
+@media (max-width: 480px) {
+    body.webview-mode .container {
+        padding: 0 0.75rem;
+    }
+
+    body.webview-mode .card,
+    body.webview-mode .dashboard-card {
+        padding: 1rem;
+        border-radius: 0.75rem;
+    }
+
+    /* Stack grid items on small screens */
+    body.webview-mode .grid-cols-1,
+    body.webview-mode [class*="grid-cols"] {
+        grid-template-columns: 1fr !important;
+        gap: 0.75rem;
+    }
+
+    /* Reduce font sizes on small screens */
+    body.webview-mode h1 {
+        font-size: 1.5rem;
+    }
+
+    body.webview-mode h2 {
+        font-size: 1.25rem;
+    }
+
+    /* Full width buttons on mobile */
+    body.webview-mode .btn {
+        width: 100%;
+        justify-content: center;
+    }
+}
+
+/* ===== DO'S AND DON'TS ENFORCEMENT ===== */
+
+/* DON'T: Never lock scroll on these elements */
+body.webview-mode .app-container {
+    overflow-y: auto !important;
+    overflow-x: hidden !important;
+}
+
+/* DON'T: Avoid position:fixed on main content */
+body.webview-mode .content-fixed-override {
+    position: relative !important;
+}
+
+/* DO: Allow fixed elements only for overlays/modals */
+body.webview-mode .toast-container,
+body.webview-mode .fab,
+body.webview-mode .modal-backdrop {
+    position: fixed;
+    /* Intentionally fixed */
+}
+
+/* ===== ANDROID SPECIFIC FIXES ===== */
+@supports (-webkit-touch-callout: none) {
+    /* iOS only - already has smooth scroll */
+}
+
+@supports not (-webkit-touch-callout: none) {
+
+    /* Android and others - force scroll behavior */
+    body.webview-mode .app-container {
+        scroll-behavior: smooth;
+    }
+}
+
+/* =========================================
+   APPMYSITE WEBVIEW - HEADER/NAV HIDING
+   Applies to both:
+   - 'is-app' class (PHP server-side detection on body)
+   - 'webview-mode' class (JavaScript detection on html or body)
+   ========================================= */
+
+/**
+ * Hide top navigation bar completely in app WebView
+ * The app has its own native navigation
+ */
+/* HEADER AND NAV VISIBILITY RESTORED
+ * Use standard display for header and nav
+ */
+body.is-app .top-nav,
+body.webview-mode .top-nav,
+html.webview-mode .top-nav,
+html.is-app .top-nav {
+    display: none !important;
+}
+
+
+/*
+body.is-app .app-header,
+body.webview-mode .app-header,
+html.webview-mode .app-header,
+html.is-app .app-header {
+    display: none !important;
+}
+*/
+
+
+/* Layout adjustments disabled to accommodate header */
+body.is-app .app-container,
+body.webview-mode .app-container,
+html.webview-mode .app-container,
+html.is-app .app-container {
+    padding-top: env(safe-area-inset-top, 0) !important;
+}
+
+body.is-app .container:first-child,
+body.webview-mode .container:first-child,
+html.webview-mode .container:first-child,
+html.is-app .container:first-child {
+    padding-top: 0 !important;
+    margin-top: 0 !important;
+}
+
+/**
+ * Hide any WordPress admin bar if present
+ */
+body.is-app #wpadminbar,
+body.webview-mode #wpadminbar,
+html.webview-mode #wpadminbar,
+html.is-app #wpadminbar {
+    display: none !important;
+}
+
+body.is-app.admin-bar,
+body.webview-mode.admin-bar,
+html.webview-mode body.admin-bar,
+html.is-app body.admin-bar {
+    margin-top: 0 !important;
+    padding-top: 0 !important;
+}
+
+/**
+ * Hide notification permission modals in app
+ * (App handles push notifications natively)
+ */
+body.is-app #notification-permission-modal,
+body.is-app #notification-blocked-modal,
+body.webview-mode #notification-permission-modal,
+body.webview-mode #notification-blocked-modal,
+html.webview-mode #notification-permission-modal,
+html.webview-mode #notification-blocked-modal,
+html.is-app #notification-permission-modal,
+html.is-app #notification-blocked-modal {
+    display: none !important;
+}
+
+/**
+ * Hide profile dropdown in header (app has native profile)
+ */
+/*
+body.is-app .profile-dropdown-container,
+body.webview-mode .profile-dropdown-container,
+html.webview-mode .profile-dropdown-container,
+html.is-app .profile-dropdown-container {
+    display: none !important;
+}
+*/
+
+/*
+body.is-app .notification-bell-container,
+body.webview-mode .notification-bell-container,
+html.webview-mode .notification-bell-container,
+html.is-app .notification-bell-container {
+    display: none !important;
+}
+*/
+
+/**
+ * Adjust main content to fill the space properly
+ * Start from the very top when in app mode
+ */
+/*
+body.is-app,
+body.webview-mode,
+html.webview-mode body,
+html.is-app body {
+    padding-top: 0 !important;
+}
+
+body.is-app main,
+body.webview-mode main,
+html.webview-mode main,
+html.is-app main {
+    padding-top: 1rem;
+}
+*/
+
+/*
+body.is-app .app-container>.container:first-of-type,
+body.webview-mode .app-container>.container:first-of-type,
+html.webview-mode .app-container>.container:first-of-type,
+html.is-app .app-container>.container:first-of-type {
+    padding-top: env(safe-area-inset-top, 0.5rem);
+}
+*/
+
+/**
+ * Hide any breadcrumbs or secondary nav in app
+ */
+body.is-app .breadcrumb,
+body.is-app .secondary-nav,
+body.webview-mode .breadcrumb,
+body.webview-mode .secondary-nav,
+html.webview-mode .breadcrumb,
+html.webview-mode .secondary-nav,
+html.is-app .breadcrumb,
+html.is-app .secondary-nav {
+    display: none !important;
+}
+
+

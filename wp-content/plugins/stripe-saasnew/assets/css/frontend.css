@@ -1,0 +1,459 @@
+/* Stripe SaaS Frontend Styles */
+
+/* Legacy single subscribe button wrapper */
+.stripe-saas-subscribe-wrapper {
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    max-width: 400px;
+    margin: 20px auto;
+    text-align: center;
+    background: #fff;
+}
+
+.stripe-saas-plan-info {
+    margin-bottom: 20px;
+}
+
+.stripe-saas-price {
+    font-size: 2.5em;
+    font-weight: bold;
+    color: #000;
+}
+
+.stripe-saas-interval {
+    color: #666;
+    margin-top: 5px;
+}
+
+.stripe-saas-trial {
+    display: inline-block;
+    background: #4CAF50;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 4px;
+    font-size: 0.9em;
+    margin-top: 10px;
+}
+
+.stripe-saas-subscribe-btn {
+    background: #6772e5;
+    color: white;
+    border: none;
+    padding: 12px 30px;
+    font-size: 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background 0.2s;
+    width: 100%;
+}
+
+.stripe-saas-subscribe-btn:hover:not(:disabled) {
+    background: #5469d4;
+}
+
+.stripe-saas-subscribe-btn:disabled {
+    background: #ccc;
+    cursor: not-allowed;
+}
+
+.stripe-saas-error {
+    color: #d32f2f;
+    margin-top: 15px;
+    padding: 10px;
+    background: #ffebee;
+    border-radius: 4px;
+}
+
+.stripe-saas-message {
+    padding: 15px;
+    background: #e3f2fd;
+    border-left: 4px solid #2196F3;
+    border-radius: 4px;
+    margin: 20px 0;
+}
+
+/* ===== Choose Plan Shortcode Styles ===== */
+
+.stripe-saas-plans-wrapper {
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 0 20px;
+}
+
+/* Trial Status Banner */
+.stripe-saas-trial-status {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: 30px;
+    border-radius: 16px;
+    text-align: center;
+    margin-bottom: 40px;
+    box-shadow: 0 10px 40px rgba(102, 126, 234, 0.3);
+}
+
+.stripe-saas-trial-status h3 {
+    margin: 0 0 10px 0;
+    font-size: 28px;
+    font-weight: 700;
+}
+
+.stripe-saas-trial-status p {
+    margin: 0;
+    font-size: 16px;
+    opacity: 0.95;
+}
+
+/* Section Headers */
+.stripe-saas-subscription-plans h2,
+.stripe-saas-enterprise-plans h2 {
+    text-align: center;
+    font-size: 32px;
+    font-weight: 700;
+    margin: 0 0 40px 0;
+    color: #f9fafb;
+}
+
+/* Plans Grid */
+.stripe-saas-plans-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    margin-bottom: 60px;
+}
+
+/* Plan Cards */
+.stripe-saas-plan-card {
+    background: #1f2937;
+    border: 2px solid #374151;
+    border-radius: 16px;
+    padding: 32px;
+    position: relative;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+}
+
+.stripe-saas-plan-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12);
+    border-color: #6772e5;
+    background: #111827;
+}
+
+/* Recommended/Popular Badge */
+.stripe-saas-plan-card.recommended {
+    border-color: #6772e5;
+    border-width: 3px;
+    box-shadow: 0 10px 30px rgba(103, 114, 229, 0.2);
+}
+
+.stripe-saas-plan-card .plan-badge {
+    position: absolute;
+    top: -14px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: 6px 20px;
+    border-radius: 20px;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+}
+
+/* Plan Name */
+.stripe-saas-plan-card .plan-name {
+    font-size: 24px;
+    font-weight: 700;
+    margin: 0 0 16px 0;
+    color: #f9fafb;
+}
+
+/* Plan Price */
+.stripe-saas-plan-card .plan-price {
+    margin-bottom: 24px;
+}
+
+.stripe-saas-plan-card .plan-price .amount {
+    font-size: 48px;
+    font-weight: 800;
+    color: #f9fafb;
+    line-height: 1;
+}
+
+.stripe-saas-plan-card .plan-price .interval {
+    font-size: 16px;
+    color: #9ca3af;
+    font-weight: 500;
+}
+
+/* Trial Badge */
+.stripe-saas-plan-card .plan-trial {
+    display: inline-block;
+    background: #10b981;
+    color: white;
+    padding: 6px 14px;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 24px;
+}
+
+/* Plan Features */
+.stripe-saas-plan-card .plan-features {
+    flex-grow: 1;
+    margin-bottom: 24px;
+}
+
+.stripe-saas-plan-card .plan-features .feature {
+    padding: 10px 0;
+    color: #d1d5db;
+    font-size: 15px;
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+}
+
+.stripe-saas-plan-card .plan-features .feature:before {
+    content: "✓";
+    color: #10b981;
+    font-weight: 700;
+    font-size: 18px;
+    flex-shrink: 0;
+}
+
+/* CTA Button */
+.stripe-saas-plan-card .plan-cta {
+    width: 100%;
+    padding: 16px 24px;
+    font-size: 16px;
+    font-weight: 600;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all 0.2s;
+    text-align: center;
+    background: #6772e5;
+    color: white;
+    box-shadow: 0 4px 12px rgba(103, 114, 229, 0.3);
+}
+
+.stripe-saas-plan-card .plan-cta:hover:not(:disabled) {
+    background: #5469d4;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(103, 114, 229, 0.4);
+}
+
+.stripe-saas-plan-card .plan-cta:disabled {
+    background: #d1d5db;
+    cursor: not-allowed;
+    box-shadow: none;
+}
+
+/* Recommended Plan CTA - Special Style */
+.stripe-saas-plan-card.recommended .plan-cta {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
+}
+
+.stripe-saas-plan-card.recommended .plan-cta:hover:not(:disabled) {
+    box-shadow: 0 8px 24px rgba(102, 126, 234, 0.5);
+    transform: translateY(-2px);
+}
+
+/* Enterprise Plan - Special Styling */
+.stripe-saas-plan-card.enterprise {
+    background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+    color: white;
+    border-color: #3d3d3d;
+}
+
+.stripe-saas-plan-card.enterprise .plan-name,
+.stripe-saas-plan-card.enterprise .plan-price .amount {
+    color: white;
+}
+
+.stripe-saas-plan-card.enterprise .plan-price .interval {
+    color: #d1d5db;
+}
+
+.stripe-saas-plan-card.enterprise .plan-features .feature {
+    color: #e5e7eb;
+}
+
+.stripe-saas-plan-card.enterprise .plan-features .feature:before {
+    color: #fbbf24;
+}
+
+.stripe-saas-plan-card.enterprise .plan-cta {
+    background: #fbbf24;
+    color: #1a1a1a;
+    box-shadow: 0 6px 20px rgba(251, 191, 36, 0.4);
+}
+
+.stripe-saas-plan-card.enterprise .plan-cta:hover:not(:disabled) {
+    background: #f59e0b;
+    box-shadow: 0 8px 24px rgba(251, 191, 36, 0.5);
+}
+
+/* Enterprise Plans Section */
+.stripe-saas-enterprise-plans {
+    margin-top: 60px;
+}
+
+.stripe-saas-enterprise-plans h2 {
+    color: #1a1a1a;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .stripe-saas-plans-grid {
+        grid-template-columns: 1fr;
+        gap: 24px;
+    }
+
+    .stripe-saas-subscription-plans h2,
+    .stripe-saas-enterprise-plans h2 {
+        font-size: 24px;
+        margin-bottom: 30px;
+    }
+
+    .stripe-saas-plan-card {
+        padding: 24px;
+    }
+
+    .stripe-saas-plan-card .plan-price .amount {
+        font-size: 40px;
+    }
+
+    .stripe-saas-trial-status {
+        padding: 24px;
+    }
+
+    .stripe-saas-trial-status h3 {
+        font-size: 22px;
+    }
+}
+
+/* Loading State */
+.stripe-saas-plan-card .plan-cta.loading {
+    position: relative;
+    color: transparent;
+    pointer-events: none;
+}
+
+.stripe-saas-plan-card .plan-cta.loading:after {
+    content: "";
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    top: 50%;
+    left: 50%;
+    margin-left: -10px;
+    margin-top: -10px;
+    border: 3px solid rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    border-top-color: white;
+    animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* Dark Mode Support (Optional) - Removed as it's now default */
+
+/* ===== New Button States ===== */
+
+/* Current Plan - Disabled/Muted */
+.stripe-saas-plan-card .plan-cta.current-plan-btn {
+    background: #374151;
+    color: #9ca3af;
+    cursor: default;
+    border: 1px solid #4b5563;
+    box-shadow: none;
+    opacity: 0.8;
+}
+
+.stripe-saas-plan-card .plan-cta.current-plan-btn:hover {
+    transform: none;
+    background: #374151;
+}
+
+/* Upgrade - Prominent (Gold/Accent) */
+.stripe-saas-plan-card .plan-cta.upgrade-btn {
+    background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+    color: white;
+    box-shadow: 0 4px 12px rgba(245, 158, 11, 0.3);
+}
+
+.stripe-saas-plan-card .plan-cta.upgrade-btn:hover:not(:disabled) {
+    background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%);
+    box-shadow: 0 6px 16px rgba(245, 158, 11, 0.4);
+}
+
+/* Downgrade/Switch - Neutral */
+.stripe-saas-plan-card .plan-cta.downgrade-btn {
+    background: #4b5563;
+    color: white;
+}
+
+.stripe-saas-plan-card .plan-cta.downgrade-btn:hover:not(:disabled) {
+    background: #6b7280;
+}
+
+/* Active Plan Highlighting */
+.stripe-saas-plan-card.is-current {
+    border-color: #10b981;
+    border-width: 3px;
+    box-shadow: 0 10px 40px rgba(16, 185, 129, 0.2);
+    background: #064e3b;
+}
+
+.stripe-saas-plan-card.is-current .plan-badge.current-plan-badge {
+    background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+    box-shadow: 0 4px 12px rgba(16, 185, 129, 0.4);
+}
+
+.stripe-saas-plan-card.is-current .plan-name,
+.stripe-saas-plan-card.is-current .plan-price .amount {
+    color: #ecfdf5;
+}
+
+.stripe-saas-plan-card.is-current .plan-price .interval,
+.stripe-saas-plan-card.is-current .plan-features .feature {
+    color: #a7f3d0;
+}
+
+.stripe-saas-plan-card.is-current .plan-cta.active-plan {
+    background: #059669;
+    border: 1px solid #064e3b;
+    color: #ecfdf5;
+    opacity: 1;
+}
+
+/* premium-btn for upgrades */
+.stripe-saas-plan-card .premium-btn {
+    background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+    animation: pulse-gold 2s infinite;
+}
+
+@keyframes pulse-gold {
+    0% {
+        box-shadow: 0 0 0 0 rgba(245, 158, 11, 0.4);
+    }
+
+    70% {
+        box-shadow: 0 0 0 10px rgba(245, 158, 11, 0);
+    }
+
+    100% {
+        box-shadow: 0 0 0 0 rgba(245, 158, 11, 0);
+    }
+}

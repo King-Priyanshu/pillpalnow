@@ -1,0 +1,117 @@
+<?php
+/**
+ * Plugin Name: Custom SMTP for apps.best100pro.com
+ * Description: Direct SMTP integration without relying on FluentMail
+ * Plugin URI: https://apps.best100pro.com
+ * Version: 1.0
+ * Author: admin
+ */
+
+if (!defined('ABSPATH')) {
+    exit; // Exit if accessed directly
+}
+
+function custom_smtp_wp_mail($to, $subject, $message, $headers = '', $attachments = []) {
+    require_once ABSPATH . WPINC . '/PHPMailer/PHPMailer.php';
+    require_once ABSPATH . WPINC . '/PHPMailer/SMTP.php';
+    
+    $mail = new PHPMailer\PHPMailer\PHPMailer(true);
+    
+    try {
+        // SMTP settings
+        $mail->isSMTP();
+        $mail->Host = 'mail.botdigit.com';
+        $mail->Port = 465;
+        $mail->SMTPSecure = 'ssl';
+        $mail->SMTPAuth = true;
+        $mail->Username = 'admin@botdigit.com';
+        $mail->Password = 'M4ster@809';
+        $mail->Timeout = 10;
+        
+        // Default from address if not specified
+        $from_email = 'tarun.zip@gmail.com';
+        $from_name = 'PillPalNow';
+        
+        // Set from address
+        $mail->setFrom($from_email, $from_name);
+        
+        // Set to address
+        $mail->addAddress($to);
+        
+        // Set subject
+        $mail->Subject = $subject;
+        
+        // Set body
+        $mail->isHTML(true);
+        $mail->Body = $message;
+        $mail->AltBody = strip_tags($message);
+        
+        // Handle attachments
+        if (!empty($attachments)) {
+            foreach ($attachments as $attachment) {
+                $mail->addAttachment($attachment);
+            }
+        }
+        
+        // Handle headers
+        if (!empty($headers)) {
+            // Process string headers
+            if (is_string($headers)) {
+                $headers = explode("\n", str_replace("\r\n", "\n", $headers));
+            }
+            
+            foreach ($headers as $header) {
+                $header = trim($header);
+                if (empty($header)) continue;
+                
+                // Handle From header
+                if (strpos(strtolower($header), 'from:') === 0) {
+                    $from = substr($header, 5);
+                    if (preg_match('/(.*)<(.*)>/', $from, $matches)) {
+                        $from_name = trim($matches[1]);
+                        $from_email = trim($matches[2]);
+                        $mail->setFrom($from_email, $from_name);
+                    } else {
+                        $mail->setFrom(trim($from));
+                    }
+                } elseif (strpos(strtolower($header), 'reply-to:') === 0) {
+                    $reply_to = trim(substr($header, 8));
+                    if (preg_match('/(.*)<(.*)>/', $reply_to, $matches)) {
+                        $mail->addReplyTo(trim($matches[2]), trim($matches[1]));
+                    } else {
+                        $mail->addReplyTo($reply_to);
+                    }
+                } elseif (strpos(strtolower($header), 'content-type:') === 0) {
+                    // PHPMailer handles this automatically
+                    continue;
+                } else {
+                    $mail->addCustomHeader($header);
+                }
+            }
+        }
+        
+        $mail->send();
+        return true;
+        
+    } catch (Exception $e) {
+        error_log('SMTP Error: ' . $e->getMessage());
+        return false;
+    }
+}
+
+// Replace the default wp_mail function
+if ( ! function_exists( 'wp_mail' ) ) {
+    function wp_mail( $to, $subject, $message, $headers = '', $attachments = array() ) {
+        return custom_smtp_wp_mail( $to, $subject, $message, $headers, $attachments );
+    }
+}
+
+// Activation hook
+register_activation_hook(__FILE__, function() {
+    // No special activation needed
+});
+
+// Deactivation hook
+register_deactivation_hook(__FILE__, function() {
+    // No special deactivation needed
+});

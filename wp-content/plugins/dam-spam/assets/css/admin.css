@@ -1,0 +1,406 @@
+/* not prefixed with #dam-spam for styling outside settings pages */
+.icon-action {
+	max-width: 16px;
+	max-height: 16px;
+	cursor: pointer;
+}
+
+.edit-comments-php .icon-action {
+	max-width: 12px;
+	max-height: 12px;
+	vertical-align: middle;
+}
+
+.dam-spam-locked th.check-column {
+	border-left: 4px solid #dc3232;
+}
+
+/* prefixed with #dam-spam for styling inside settings pages only */
+body.dam-spam {
+	background: #111;
+}
+
+body.dam-spam .wrap > div.notice, #dam-spam div.notice {
+	border-width: 0 0 0 4px;
+	background: #000;
+}
+
+#dam-spam, #dam-spam * {
+	box-sizing: border-box;
+	transition: all 0.5s ease;
+}
+
+#dam-spam, #dam-spam h2, #dam-spam h3, #dam-spam h4, #dam-spam h5, #dam-spam h6, #dam-spam p {
+	color: #fff;
+}
+
+#dam-spam h1, #dam-spam a {
+	color: #c6ac40;
+}
+
+#dam-spam hr {
+	border-color: #333;
+}
+
+#dam-spam img {
+	margin-right: 5px;
+}
+
+#dam-spam ul, #dam-spam ol {
+	margin: 30px 0 30px 60px;
+}
+
+#dam-spam ul ul, #dam-spam ol ol, #dam-spam ul ol, #dam-spam ol ul {
+	margin-top: 0;
+	margin-bottom: 0;
+}
+
+#dam-spam ol {
+	list-style: decimal outside;
+	list-style-type: decimal-leading-zero;
+	margin-left: 70px;
+}
+
+#dam-spam ul li {
+	list-style-type: '— ';
+}
+
+#dam-spam li {
+	line-height: 125%;
+	margin: 20px 0;
+}
+
+#dam-spam input, #dam-spam textarea, #dam-spam select, #dam-spam option {
+	color: #ccc;
+	text-shadow: none;
+	border: 2px solid #333;
+	outline: 0;
+	margin-bottom: 5px;
+	background: #333;
+}
+
+#dam-spam input:focus, #dam-spam textarea:focus {
+	border: 2px solid #c6ac40;
+}
+
+#dam-spam input[type="text"] {
+	max-width: 400px;
+}
+
+#dam-spam input:disabled, #dam-spam input:disabled *, #dam-spam #check_form:checked + #check_wooform, #dam-spam #check_form:checked + #check_wooform *, #dam-spam #check_form:checked + #check_gvform, #dam-spam #check_form:checked + #check_gvform *, #dam-spam #check_form:checked + #check_wpform, #dam-spam #check_form:checked + #check_wpform * {
+	color: gray !important;
+	border-color: gray !important;
+	background: gray !important;
+	opacity: 0.5 !important;
+	cursor: not-allowed !important;
+	pointer-events: none !important;
+}
+
+#dam-spam textarea {
+	width: 100% !important;
+	max-width: 500px !important;
+}
+
+#dam-spam select.dam-spam-small-dropbox{
+	vertical-align: baseline;
+}
+
+#dam-spam #dam-spam-input {
+	width: 170px !important;
+	max-width: 170px !important;
+}
+
+#dam-spam #dam-spam-header {
+	font-size: 30px;
+	font-weight: bold;
+}
+
+#dam-spam .dam-spam-sub-header, #dam-spam .dam-spam-sub-header-2 {
+	color: #aaa;
+	font-size: 20px !important;
+	font-weight: 500;
+}
+
+#dam-spam .dam-spam-sub-header-2 {
+	font-size: 16px;
+}
+
+#dam-spam .dam-spam-sub-header div.container {
+	padding: 5% 0;
+}
+
+#dam-spam .key-header {
+	display: block;
+	font-size: 16px !important;
+}
+
+#dam-spam div.main-section {
+	font-size: 18px;
+	font-weight: bold;
+	color: #eae4ca;
+	margin: 30px 0 15px;
+}
+
+#dam-spam .dam-spam-info-box {
+	background: #222;
+	width: 100%;
+	padding: 0.1em 1.5em 1.5em;
+	margin: 20px 0;
+	box-sizing: border-box;
+}
+
+#dam-spam .dam-spam-small-box {
+	width: 75px;
+	text-align: center;
+	display: initial !important;
+}
+
+#dam-spam .stat-box {
+	padding: 5px 10px;
+	background: #222;
+	margin: 5px;
+	border-radius: 2;
+	float: left;
+}
+
+#dam-spam .postbox {
+	border-color: #333;
+	background: #222;
+}
+
+#dam-spam .postbox .inside {
+	padding-bottom: 0;
+}
+
+#dam-spam #dam-spam-table {
+	width: 100%;
+	background: #222;
+}
+
+#dam-spam tr {
+	background: #c6ac40;
+}
+
+#dam-spam td {
+	padding: 10px;
+	background: #222;
+}
+
+#dam-spam .filter-header {
+	cursor: pointer;
+}
+
+#dam-spam th.dam-spam-cleanup {
+	position: sticky;
+	top: 32px;
+	background: #c6ac40;
+	text-transform: uppercase;
+	color: #fff;
+}
+
+#dam-spam .dam-spam-cleanup-tr:hover {
+	background: #222 !important;
+}
+
+#dam-spam .phpinfodisplay table {
+	width: 100%;
+}
+
+#dam-spam .button-primary {
+	font-size: 14px;
+	color: #000;
+	font-weight: 500;
+	padding: 5px 15px;
+	border-color: #c6ac40;
+	background-color: #c6ac40;
+}
+
+#dam-spam .button-primary:hover, #dam-spam .button-primary:focus {
+	opacity:0.8;
+}
+
+#dam-spam #php-info.button-primary {
+	display: block;
+	text-align: center;
+	margin: 0 auto;
+}
+
+#dam-spam .center {
+	text-align: center;
+}
+
+#dam-spam .nav-tab-wrapper, #dam-spam .wrap h2.nav-tab-wrapper, #dam-spam h1.nav-tab-wrapper {
+	border-color: #000;
+}
+
+#dam-spam .nav-tab {
+	color: #fff;
+	border-color: #000;
+	background: #000;
+}
+
+#dam-spam .nav-tab-active {
+	background: #333;
+}
+
+/* checkbox toggle switch */
+#dam-spam div.checkbox.switcher label,
+#dam-spam div.radio.switcher label {
+	padding: 0;
+}
+
+#dam-spam div.checkbox.switcher label *,
+#dam-spam div.radio.switcher label * {
+	vertical-align: middle;
+}
+
+#dam-spam div.checkbox.switcher label input,
+#dam-spam div.radio.switcher label input {
+	display: none;
+}
+
+#dam-spam div.checkbox.switcher label input + span,
+#dam-spam div.radio.switcher label input + span {
+	position: relative;
+	display: inline-block;
+	font-size: 12px;
+	line-height: 12px;
+	margin-right: 4px;
+	width: 45px;
+	height: 22.5px;
+	background: #d9534f;
+	border: 1px solid #d43f3a;
+	border-radius: 50px;
+	transition: all 0.3s ease-in-out;
+	cursor: pointer;
+}
+
+#dam-spam div.checkbox.switcher label input + span small,
+#dam-spam div.radio.switcher label input + span small {
+	position: absolute;
+	display: block;
+	width: 50%;
+	height: 100%;
+	background: #fff;
+	border-radius: 50%;
+	transition: all 0.3s ease-in-out;
+	left: 0;
+}
+
+#dam-spam div.checkbox.switcher label input:checked + span,
+#dam-spam div.radio.switcher label input:checked + span {
+	background: #5cb85c;
+	border-color: #4cae4c;
+}
+
+#dam-spam div.checkbox.switcher label input:checked + span small,
+#dam-spam div.radio.switcher label input:checked + span small {
+	left: 50%;
+}
+
+#dam-spam div.checkbox.switcher label input + span small:before,
+#dam-spam div.radio.switcher label input + span small:before {
+	content: 'Off';
+	position: absolute;
+	top: 4.5px;
+	left: 24px;
+	width: 26px;
+	height: 26px;
+	border-radius: 90px;
+	transition: 0.3s;
+	color: #fff;
+}
+
+#dam-spam div.checkbox.switcher label input:checked + span small:before,
+#dam-spam div.radio.switcher label input:checked + span small:before {
+	content: 'On';
+	left: -17px;
+}
+
+#dam-spam div.checkbox.switcher label input:disabled + span {
+	color: gray !important;
+	background: gray !important;
+	border-color: gray !important;
+	opacity: 0.5 !important;
+	cursor: not-allowed !important;
+	pointer-events: none !important;
+}
+
+#dam-spam div.checkbox.switcher label:active:after {
+	width: 60px;
+}
+
+/* responsive layout */
+@media(max-width: 680px) {
+
+	#dam-spam th.dam-spam-cleanup {
+		top: 48px;
+	}
+
+}
+
+/* user list */
+#dam-spam .clickable {
+	cursor: pointer;
+}
+
+#dam-spam .header:after {
+	content: ' \25bc';
+	font-size: 0.8em;
+}
+
+#dam-spam .reverse:after {
+	content: ' \25b2'!important;
+	font-size: 0.8em;
+}
+
+#dam-spam .odd {
+	background-color: #FFFFEE;
+}
+
+#dam-spam .even {
+	background-color: #EEFFFF;
+}
+
+#dam-spam .button-secondary-red {
+	background: #ba0000;
+	border-color: #690000 #690000 #690000;
+	box-shadow: 0 1px 0 #690000;
+	color: #fff;
+	text-decoration: none;
+	text-shadow: 0 -1px 1px #690000, 1px 0 1px #690000, 0 1px 1px #690000, -1px 0 1px #690000;
+	display: inline-block;
+	font-size: 13px;
+	line-height: 26px;
+	height: 28px;
+	margin: 0;
+	padding: 0 10px 1px;
+	cursor: pointer;
+	border-width: 1px;
+	border-style: solid;
+	border-radius: 3px;
+	white-space: nowrap;
+}
+
+#dam-spam .button-secondary-red:hover {
+	background: #ca0000;
+	color: #fff;
+}
+
+@media (prefers-color-scheme: light) {
+	body.dam-spam {
+		background: #f0f0f1;
+	}
+	body.dam-spam .wrap > div.notice, #dam-spam div.notice, #dam-spam .postbox, #dam-spam .dam-spam-info-box, #dam-spam .stat-box, #dam-spam td {
+		background: #fff;
+	}
+	#dam-spam, #dam-spam h2, #dam-spam h3, #dam-spam h4, #dam-spam h5, #dam-spam h6, #dam-spam p {
+		color: #3c434a;
+	}
+	#dam-spam div.main-section {
+		color: #222
+	}
+	#dam-spam .dam-spam-sub-header, #dam-spam .dam-spam-sub-header-2 {
+		color: #444
+	}
+}

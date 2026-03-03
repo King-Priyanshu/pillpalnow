@@ -1,0 +1,159 @@
+/* Stripe SaaS Admin Styles */
+
+.stripe-saas-plan {
+    background: #fff;
+    border: 1px solid #ccd0d4;
+    border-radius: 4px;
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+.stripe-saas-plan h3 {
+    margin-top: 0;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #eee;
+}
+
+.stripe-saas-info {
+    margin-top: 30px;
+    padding: 20px;
+    background: #f0f0f1;
+    border-left: 4px solid #2271b1;
+    border-radius: 4px;
+}
+
+.stripe-saas-info code {
+    display: block;
+    padding: 10px;
+    background: #23282d;
+    color: #50e3c2;
+    border-radius: 4px;
+    margin-top: 10px;
+    word-break: break-all;
+}
+
+.stripe-saas-info ul {
+    margin-top: 10px;
+    padding-left: 20px;
+}
+
+.stripe-saas-info ul li {
+    margin-bottom: 5px;
+}
+
+.form-table th {
+    font-weight: 600;
+}
+
+.notice.notice-error {
+    border-left-color: #d63638;
+}
+
+.notice pre {
+    background: #23282d;
+    color: #50e3c2;
+    padding: 15px;
+    border-radius: 4px;
+    overflow-x: auto;
+}
+
+/* Tabbed Interface */
+.stripe-saas-tabs {
+    margin: 20px 0 0 0;
+    border-bottom: 1px solid #ccd0d4;
+}
+
+.stripe-saas-tabs-nav {
+    display: flex;
+    gap: 0;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.stripe-saas-tabs-nav li {
+    margin: 0;
+}
+
+.stripe-saas-tabs-nav button {
+    background: #f0f0f1;
+    border: 1px solid #ccd0d4;
+    border-bottom: none;
+    padding: 12px 20px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 500;
+    color: #1d2327;
+    transition: all 0.2s;
+    border-radius: 4px 4px 0 0;
+    margin-right: 4px;
+    position: relative;
+    top: 1px;
+}
+
+.stripe-saas-tabs-nav button:hover {
+    background: #fff;
+    color: #2271b1;
+}
+
+.stripe-saas-tabs-nav button.active {
+    background: #fff;
+    border-bottom-color: #fff;
+    color: #2271b1;
+    font-weight: 600;
+}
+
+.stripe-saas-tab-content {
+    display: none;
+    padding: 20px 0;
+}
+
+.stripe-saas-tab-content.active {
+    display: block;
+}
+
+/* Plan Cards in Tabs */
+.stripe-saas-tab-content .stripe-saas-plan {
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+/* Reset Plans Button */
+#stripe-saas-reset-plans {
+    background: #2271b1;
+    color: #fff;
+    border-color: #2271b1;
+    box-shadow: inset 0 -1px 0 rgba(0, 0, 0, 0.1);
+}
+
+#stripe-saas-reset-plans:hover {
+    background: #135e96;
+    border-color: #135e96;
+    color: #fff;
+}
+
+#stripe-saas-reset-plans:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+/* Section Headers */
+.stripe-saas-section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.stripe-saas-section-header h2 {
+    margin: 0;
+}
+
+/* Info Tabs */
+.stripe-saas-info.tab-style {
+    margin-top: 0;
+}
+
+.stripe-saas-info h3 {
+    margin-top: 0;
+    color: #2271b1;
+}

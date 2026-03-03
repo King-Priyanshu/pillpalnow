@@ -1,0 +1,5 @@
+{
+  "require": {
+    "wp-cli/wp-config-transformer": "^1.3"
+  }
+}

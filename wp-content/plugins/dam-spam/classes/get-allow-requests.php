@@ -1,0 +1,62 @@
+<?php
+
+if ( !defined( 'ABSPATH' ) ) {
+	status_header( 404 );
+	exit;
+}
+
+class dam_spam_get_allow_requests {
+	public function process( $ip, &$stats = array(), &$options = array(), &$post = array() ) {
+		extract( $stats );
+		extract( $options );
+		$icons = dam_spam_get_icon_urls();
+		extract( $icons );
+		$ajaxurl = admin_url( 'admin-ajax.php' );
+		$show	 = '';
+		$nallow_list_requests = array();
+		foreach ( $allow_list_requests as $key => $value ) {
+			$sw = true;
+			if ( !empty( $ip ) && $ip != 'x' ) {
+				if ( $key == $ip ) {
+					$sw = false;
+				}
+				if ( $ip == trim( $value[0] ) ) {
+					$sw = false;
+				}
+				if ( $ip == trim( $value[1] ) ) {
+					$sw = false;
+				}
+			}
+			$container = 'allow_list_request';
+			if ( $sw ) {
+				$nallow_list_requests[$key] = $value;
+				$show .= "<tr>";
+				$trsh = "<a href=\"\" onclick=\"damSpamAjaxProcess('" . esc_js( $key ) . "','allow_list_request','delete_wl_row','" . esc_js( $ajaxurl ) . "');return false;\" title=\"" . esc_attr__( 'Delete Row', 'dam-spam' ) . "\" alt=\"" . esc_attr__( 'Delete Row', 'dam-spam' ) . "\" ><img src=\"$trash\" class=\"icon-action\"></a>";
+				// translators: Delete Row action title and alt text
+				$addtoblock = "<a href=\"\" onclick=\"damSpamAjaxProcess('" . esc_js( $value[0] ) . "','" . esc_js( $container ) . "','add_black','" . esc_js( $ajaxurl ) . "');return false;\" title=\"" . sprintf( esc_attr__( 'Add %s to Block List', 'dam-spam' ), $value[0] ) . "\" alt=\"" . sprintf( esc_attr__( 'Add %s to Block List', 'dam-spam' ), $value[0] ) . "\"><img src=\"$down\" class=\"icon-action\"></a>";
+				// translators: %s is the IP address being added to block list
+				$addtoallow = "<a href=\"\" onclick=\"damSpamAjaxProcess('" . esc_js( $value[0] ) . "','" . esc_js( $container ) . "','add_white','" . esc_js( $ajaxurl ) . "', '" . esc_js( $value[1] ) . "');return false;\" title=\"" . sprintf( esc_attr__( 'Add %s to Allow List', 'dam-spam' ), $value[0] ) . "\" alt=\"" . sprintf( esc_attr__( 'Add %s to Allow List', 'dam-spam' ), $value[0] ) . "\"><img src=\"$up\" class=\"icon-action\"></a>";
+				$show .= "<td>$key $trsh $addtoblock $addtoallow</td>";
+				$who = "<br><a title=\"" . esc_attr__( 'Look up WHOIS', 'dam-spam' ) . "\" target=\"dam_spam_check\" href=\"https://whois.domaintools.com/$value[0]\"><img src=\"$whois\" class=\"icon-action\"/></a> ";
+				// translators: %s is the IP address for WHOIS lookup
+				$trsh = "<a href=\"\" onclick=\"damSpamAjaxProcess('" . esc_js( $value[0] ) . "','allow_list_request','delete_wlip','" . esc_js( $ajaxurl ) . "');return false;\" title=\"" . sprintf( esc_attr__( 'Delete all %s', 'dam-spam' ), $value[0] ) . "\" alt=\"" . sprintf( esc_attr__( 'Delete all %s', 'dam-spam' ), $value[0] ) . "\"><img src=\"$trash\" class=\"icon-action\"></a>";
+				$show .= "<td>$value[0] $who $trsh</td>";
+				// translators: %s is the IP address being deleted from allow requests
+				$trsh = "<a href=\"\" onclick=\"damSpamAjaxProcess('" . esc_js( $value[1] ) . "','allow_list_request','delete_wlem','" . esc_js( $ajaxurl ) . "');return false;\" title=\"" . sprintf( esc_attr__( 'Delete all %s', 'dam-spam' ), $value[1] ) . "\" alt=\"" . sprintf( esc_attr__( 'Delete all %s', 'dam-spam' ), $value[1] ) . "\"><img src=\"$trash\" class=\"icon-action\"></a>";
+				$show .= "<td><a target=\"_blank\" href=\"mailto:$value[1]?subject=Website Access\">$value[1] $trsh</td>";
+				$show .= "<td>$value[3]</td>";
+				$show .= "<td>$value[4]</td>";
+				$show .= "</tr>";
+			}
+		}
+		$stats['allow_list_requests'] = $nallow_list_requests;
+		if ( array_key_exists( 'addon', $post ) ) {
+			dam_spam_set_stats( $stats, $post['addon'] );
+		} else {
+			dam_spam_set_stats( $stats );
+		}
+		return $show;
+	}
+}
+
+?>
